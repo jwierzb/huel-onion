@@ -15,14 +15,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
@@ -30,57 +30,126 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2em;
+            margin-bottom: 5px;
         }
 
         .header p {
-            font-size: 1.1em;
+            font-size: 1em;
             opacity: 0.9;
+        }
+
+        .presets-bar {
+            background: #f8f9fa;
+            padding: 15px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            align-items: center;
+        }
+
+        .preset-label {
+            font-weight: bold;
+            color: #495057;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .preset-btn {
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .preset-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .preset-btn.active {
+            background: #667eea;
+            color: white;
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
+            grid-template-columns: 1fr 350px 350px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            .milk-panel {
+                grid-column: span 2;
+            }
         }
 
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
+            .milk-panel {
+                grid-column: span 1;
+            }
         }
 
         .ingredients-panel {
             background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .results-panel {
             background: #fff;
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 20px;
             border: 2px solid #e9ecef;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .milk-panel {
+            background: #e8f4fd;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #b8d9f1;
         }
 
         h2 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h3 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
 
         .ingredient-item {
             background: white;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
@@ -92,13 +161,13 @@
         .ingredient-header {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .ingredient-checkbox {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
             cursor: pointer;
         }
 
@@ -106,21 +175,22 @@
             font-weight: 600;
             color: #495057;
             flex-grow: 1;
+            font-size: 0.95em;
         }
 
         .ingredient-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .amount-input {
-            width: 80px;
-            padding: 8px;
+            width: 70px;
+            padding: 6px;
             border: 2px solid #dee2e6;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
         .amount-input:focus {
@@ -129,83 +199,85 @@
         }
 
         .ingredient-info {
-            font-size: 0.9em;
+            font-size: 0.8em;
             color: #6c757d;
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px solid #e9ecef;
         }
 
         .nutrition-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .nutrition-item {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
         }
 
         .nutrition-value {
-            font-size: 2em;
+            font-size: 1.6em;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .nutrition-label {
-            font-size: 0.9em;
+            font-size: 0.85em;
             opacity: 0.9;
         }
 
         .total-weight {
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             text-align: center;
         }
 
         .total-weight-value {
-            font-size: 1.5em;
+            font-size: 1.3em;
             font-weight: bold;
             color: #667eea;
         }
 
         .category-header {
             background: #e9ecef;
-            padding: 10px 15px;
-            margin: 20px -25px 15px -25px;
+            padding: 8px 12px;
+            margin: 15px -20px 10px -20px;
             font-weight: bold;
             color: #495057;
+            font-size: 0.95em;
         }
 
         .portion-info {
             background: #e8f5e9;
             border-left: 4px solid #4caf50;
-            padding: 15px;
+            padding: 12px;
             border-radius: 5px;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
         }
 
         .portion-info h3 {
             color: #2e7d32;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .add-custom-btn {
             background: #667eea;
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 15px;
             width: 100%;
             transition: background 0.3s ease;
         }
@@ -218,24 +290,24 @@
             background: #fff3cd;
             border: 2px solid #ffc107;
             padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
             display: none;
         }
 
-        .custom-ingredient-form input {
+        .custom-ingredient-form input, .custom-ingredient-form select {
             width: 100%;
-            padding: 8px;
-            margin: 5px 0;
+            padding: 6px;
+            margin: 4px 0;
             border: 1px solid #dee2e6;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         .custom-ingredient-form button {
-            margin: 5px;
-            padding: 8px 16px;
+            margin: 4px;
+            padding: 6px 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
         }
 
@@ -251,17 +323,17 @@
 
         .recipe-actions {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 15px;
         }
 
         .action-btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
 
@@ -270,17 +342,9 @@
             color: white;
         }
 
-        .save-recipe-btn:hover {
-            background: #218838;
-        }
-
         .load-recipe-btn {
             background: #17a2b8;
             color: white;
-        }
-
-        .load-recipe-btn:hover {
-            background: #138496;
         }
 
         .clear-btn {
@@ -288,37 +352,79 @@
             color: white;
         }
 
-        .clear-btn:hover {
-            background: #c82333;
-        }
-
-        .preset-btn {
+        .milk-item {
             background: white;
-            border: 2px solid #667eea;
-            color: #667eea;
-            padding: 12px 20px;
             border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .milk-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .milk-radio {
+            margin-right: 8px;
+        }
+
+        .milk-name {
+            font-weight: 600;
+            color: #495057;
+            flex-grow: 1;
+        }
+
+        .milk-info {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-left: 26px;
+        }
+
+        .milk-amount {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .milk-amount-input {
+            width: 100px;
+            padding: 8px;
+            border: 2px solid #dee2e6;
+            border-radius: 4px;
+            margin: 0 8px;
+        }
+
+        .final-nutrition {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .final-nutrition h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .final-nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .delete-custom-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
-            margin: 5px;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .preset-btn:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .preset-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .preset-info {
-            font-size: 0.85em;
-            opacity: 0.8;
-            margin-top: 5px;
+            font-size: 0.8em;
+            float: right;
         }
     </style>
 </head>
@@ -327,6 +433,11 @@
         <div class="header">
             <h1>🥤 Kalkulator Domowego Huel</h1>
             <p>Stwórz własną mieszankę posiłkową z idealnym składem odżywczym</p>
+        </div>
+
+        <div class="presets-bar">
+            <span class="preset-label">⭐ Gotowe zestawy:</span>
+            <div id="presets-container"></div>
         </div>
 
         <div class="main-content">
@@ -341,11 +452,9 @@
                 
                 <div class="category-header">🌱 Dodatki odżywcze</div>
                 <div id="supplements-ingredients"></div>
-
-                <div class="presets-section">
-                    <h3 style="margin-top: 30px; margin-bottom: 15px; color: #495057;">⭐ Gotowe zestawy</h3>
-                    <div id="presets-container"></div>
-                </div>
+                
+                <div class="category-header">⭐ Własne składniki</div>
+                <div id="custom-ingredients"></div>
 
                 <button class="add-custom-btn" onclick="toggleCustomForm()">
                     ➕ Dodaj własny składnik
@@ -354,6 +463,12 @@
                 <div id="custom-form" class="custom-ingredient-form">
                     <h3>Dodaj własny składnik</h3>
                     <input type="text" id="custom-name" placeholder="Nazwa składnika">
+                    <select id="custom-category">
+                        <option value="carbs">Węglowodany i błonnik</option>
+                        <option value="protein">Białko i tłuszcze</option>
+                        <option value="supplements">Dodatki odżywcze</option>
+                        <option value="custom">Własna kategoria</option>
+                    </select>
                     <input type="number" id="custom-kcal" placeholder="Kalorie na 100g">
                     <input type="number" id="custom-protein" placeholder="Białko (g) na 100g">
                     <input type="number" id="custom-carbs" placeholder="Węglowodany (g) na 100g">
@@ -367,10 +482,10 @@
 
                 <div class="recipe-actions">
                     <button class="action-btn save-recipe-btn" onclick="saveRecipe()">
-                        💾 Zapisz przepis
+                        💾 Zapisz
                     </button>
                     <button class="action-btn load-recipe-btn" onclick="loadRecipe()">
-                        📂 Wczytaj przepis
+                        📂 Wczytaj
                     </button>
                     <button class="action-btn clear-btn" onclick="clearAll()">
                         🗑️ Wyczyść
@@ -379,13 +494,13 @@
             </div>
 
             <div class="results-panel">
-                <h2>📊 Wartości odżywcze na 100g mieszanki</h2>
+                <h2>📊 Wartości na 100g proszku</h2>
                 
                 <div class="total-weight">
-                    <div>Całkowita waga mieszanki:</div>
+                    <div>Waga mieszanki:</div>
                     <div class="total-weight-value" id="total-weight">0g</div>
-                    <div style="font-size: 0.9em; color: #6c757d; margin-top: 5px;">
-                        Liczba porcji (100g): <span id="portions-count">0</span>
+                    <div style="font-size: 0.85em; color: #6c757d; margin-top: 5px;">
+                        Porcji (100g): <span id="portions-count">0</span>
                     </div>
                 </div>
 
@@ -414,19 +529,43 @@
                 </div>
 
                 <div class="portion-info">
-                    <h3>💡 Informacje o porcji 100g</h3>
-                    <div id="portion-analysis">
-                        Wybierz składniki, aby zobaczyć analizę...
+                    <h3>💡 Analiza porcji</h3>
+                    <div id="portion-analysis" style="font-size: 0.85em;">
+                        Wybierz składniki...
+                    </div>
+                </div>
+            </div>
+
+            <div class="milk-panel">
+                <h2>🥛 Wybierz płyn</h2>
+                
+                <div id="milk-options"></div>
+                
+                <div class="milk-amount">
+                    <strong>Ilość płynu na porcję:</strong>
+                    <input type="number" class="milk-amount-input" id="milk-amount" value="400" min="100" max="1000" onchange="updateFinalNutrition()">
+                    <span>ml</span>
+                </div>
+
+                <div class="final-nutrition">
+                    <h3>🎯 Gotowy shake (100g + płyn)</h3>
+                    <div class="final-nutrition-grid">
+                        <div>Kalorie: <strong id="final-kcal">0</strong> kcal</div>
+                        <div>Białko: <strong id="final-protein">0</strong>g</div>
+                        <div>Węgle: <strong id="final-carbs">0</strong>g</div>
+                        <div>Tłuszcz: <strong id="final-fat">0</strong>g</div>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9em; opacity: 0.9;">
+                        Objętość: ~<span id="final-volume">500</span>ml
                     </div>
                 </div>
 
                 <div class="portion-info" style="background: #fff3cd; border-color: #ffc107; margin-top: 15px;">
-                    <h3 style="color: #856404;">⚠️ Pamiętaj o suplementacji</h3>
-                    <ul style="margin-left: 20px; color: #856404;">
-                        <li>Witamina D3 (2000-4000 IU dziennie zimą)</li>
-                        <li>Witamina B12 (jeśli nie używasz drożdży odżywczych)</li>
-                        <li>Omega-3 EPA/DHA (z alg lub ryb)</li>
-                        <li>Witamina C (jeśli nie dodajesz aceroli)</li>
+                    <h3 style="color: #856404;">⚠️ Suplementacja</h3>
+                    <ul style="margin-left: 20px; color: #856404; font-size: 0.85em;">
+                        <li>Wit. D3 (2000-4000 IU zimą)</li>
+                        <li>Wit. B12 (bez drożdży)</li>
+                        <li>Omega-3 EPA/DHA</li>
                     </ul>
                 </div>
             </div>
@@ -434,11 +573,25 @@
     </div>
 
     <script>
-        // Baza składników z wartościami odżywczymi na 100g
+        // Dane mleka i płynów
+        const milkDatabase = [
+            { name: "Woda", kcal: 0, protein: 0, carbs: 0, fat: 0, description: "Zero kalorii, neutralny smak" },
+            { name: "Mleko migdałowe niesłodzone", kcal: 13, protein: 0.5, carbs: 0.5, fat: 1.1, description: "Najlepsze - mało kcal, neutralny smak" },
+            { name: "Mleko sojowe", kcal: 40, protein: 3.0, carbs: 4.0, fat: 1.5, description: "Dużo białka, kremowe" },
+            { name: "Mleko owsiane", kcal: 50, protein: 1.0, carbs: 8.0, fat: 1.5, description: "Naturalnie słodkie, kremowe" },
+            { name: "Mleko kokosowe light", kcal: 20, protein: 0.2, carbs: 3.0, fat: 0.9, description: "Lekko kokosowe, mało kcal" },
+            { name: "Mleko ryżowe", kcal: 47, protein: 0.2, carbs: 10.0, fat: 1.0, description: "Wodniste, słodkie" },
+            { name: "Mleko nerkowcowe", kcal: 25, protein: 1.0, carbs: 2.0, fat: 2.0, description: "Kremowe, drogie" },
+            { name: "Mleko grochowe", kcal: 35, protein: 3.5, carbs: 2.0, fat: 1.5, description: "Wysokie białko, neutralne" },
+            { name: "Mleko krowie 2%", kcal: 50, protein: 3.4, carbs: 4.8, fat: 2.0, description: "Klasyczne, jeśli tolerujesz laktozę" },
+            { name: "Mix: 50% woda + 50% mleko", kcal: 20, protein: 1.5, carbs: 2.5, fat: 0.8, description: "Kompromis smak/kalorie" }
+        ];
+
+        // Gotowe presety
         const presetRecipes = [
             {
-                name: "Zbilansowana mieszanka z bloga",
-                description: "Nasz przepis z rozmowy - dużo błonnika, umiarkowane kalorie",
+                name: "📚 Z rozmowy",
+                description: "Nasz przepis - zbilansowany",
                 ingredients: [
                     { name: "Płatki owsiane", amount: 350, category: "carbs" },
                     { name: "Siemię lniane", amount: 100, category: "protein" },
@@ -447,53 +600,47 @@
                     { name: "Nasiona chia", amount: 30, category: "protein" },
                     { name: "Kakao", amount: 30, category: "supplements" },
                     { name: "Mleko kokosowe w proszku", amount: 15, category: "supplements" }
-                ],
-                stats: "370 kcal | 27g białka | 12g błonnika"
+                ]
             },
             {
-                name: "Niskokaloryczna",
-                description: "Idealna na redukcję - mniej kalorii, więcej białka",
+                name: "🏃 Nisko kcal",
+                description: "Na redukcję",
                 ingredients: [
                     { name: "Płatki owsiane", amount: 200, category: "carbs" },
                     { name: "Białko serwatkowe", amount: 150, category: "protein" },
                     { name: "Siemię lniane", amount: 50, category: "protein" },
                     { name: "Psyllium (babka płesznik)", amount: 20, category: "carbs" },
                     { name: "Spirulina", amount: 10, category: "supplements" }
-                ],
-                stats: "320 kcal | 35g białka | 18g błonnika"
+                ]
             },
             {
-                name: "Wysokoenergetyczna",
-                description: "Dla aktywnych - więcej kalorii i zdrowych tłuszczów",
+                name: "💪 Energia",
+                description: "Dla aktywnych",
                 ingredients: [
                     { name: "Płatki owsiane", amount: 300, category: "carbs" },
                     { name: "Białko serwatkowe", amount: 100, category: "protein" },
                     { name: "Siemię lniane", amount: 150, category: "protein" },
                     { name: "Mąka migdałowa", amount: 50, category: "protein" },
                     { name: "Nasiona chia", amount: 50, category: "protein" },
-                    { name: "Pestki dyni (mielone)", amount: 30, category: "protein" },
                     { name: "MCT w proszku", amount: 10, category: "supplements" },
                     { name: "Kakao", amount: 30, category: "supplements" }
-                ],
-                stats: "450 kcal | 25g białka | 14g błonnika"
+                ]
             },
             {
-                name: "Wegańska",
-                description: "100% roślinna - białko grochowe zamiast serwatki",
+                name: "🌱 Wegan",
+                description: "100% roślinny",
                 ingredients: [
                     { name: "Płatki owsiane", amount: 350, category: "carbs" },
                     { name: "Białko roślinne (grochowe)", amount: 120, category: "protein" },
                     { name: "Siemię lniane", amount: 100, category: "protein" },
                     { name: "Nasiona chia", amount: 50, category: "protein" },
                     { name: "Drożdże odżywcze", amount: 15, category: "supplements" },
-                    { name: "Spirulina", amount: 10, category: "supplements" },
-                    { name: "Kakao", amount: 30, category: "supplements" }
-                ],
-                stats: "380 kcal | 26g białka | 13g błonnika"
+                    { name: "Spirulina", amount: 10, category: "supplements" }
+                ]
             },
             {
-                name: "Czekoladowa",
-                description: "Dla łasuchów - więcej kakao, słodki smak",
+                name: "🍫 Czekolada",
+                description: "Pyszny!",
                 ingredients: [
                     { name: "Płatki owsiane", amount: 250, category: "carbs" },
                     { name: "Białko serwatkowe", amount: 100, category: "protein" },
@@ -501,226 +648,47 @@
                     { name: "Mąka migdałowa", amount: 50, category: "protein" },
                     { name: "Kakao", amount: 50, category: "supplements" },
                     { name: "Mleko kokosowe w proszku", amount: 30, category: "supplements" }
-                ],
-                stats: "390 kcal | 24g białka | 10g błonnika"
-            },
-            {
-                name: "Super błonnik",
-                description: "Maksymalna ilość błonnika - świetna dla jelit",
-                ingredients: [
-                    { name: "Płatki owsiane", amount: 200, category: "carbs" },
-                    { name: "Otręby owsiane", amount: 100, category: "carbs" },
-                    { name: "Psyllium (babka płesznik)", amount: 30, category: "carbs" },
-                    { name: "Białko serwatkowe", amount: 100, category: "protein" },
-                    { name: "Siemię lniane", amount: 150, category: "protein" },
-                    { name: "Nasiona chia", amount: 60, category: "protein" },
-                    { name: "Błonnik jabłkowy", amount: 20, category: "carbs" }
-                ],
-                stats: "350 kcal | 23g białka | 22g błonnika"
+                ]
             }
         ];
 
+        // Baza składników
         const ingredientsDatabase = {
             carbs: [
-                {
-                    name: "Płatki owsiane",
-                    kcal: 379,
-                    protein: 13.2,
-                    carbs: 67.7,
-                    fat: 6.9,
-                    fiber: 10.6,
-                    defaultAmount: 300
-                },
-                {
-                    name: "Otręby owsiane",
-                    kcal: 246,
-                    protein: 17.3,
-                    carbs: 66.2,
-                    fat: 7.0,
-                    fiber: 15.4,
-                    defaultAmount: 50
-                },
-                {
-                    name: "Mąka gryczana",
-                    kcal: 335,
-                    protein: 12.6,
-                    carbs: 70.6,
-                    fat: 3.1,
-                    fiber: 10.0,
-                    defaultAmount: 100
-                },
-                {
-                    name: "Błonnik jabłkowy",
-                    kcal: 180,
-                    protein: 1.0,
-                    carbs: 40.0,
-                    fat: 0.5,
-                    fiber: 35.0,
-                    defaultAmount: 20
-                },
-                {
-                    name: "Psyllium (babka płesznik)",
-                    kcal: 200,
-                    protein: 2.0,
-                    carbs: 0,
-                    fat: 0.5,
-                    fiber: 80.0,
-                    defaultAmount: 20
-                }
+                { name: "Płatki owsiane", kcal: 379, protein: 13.2, carbs: 67.7, fat: 6.9, fiber: 10.6, defaultAmount: 300 },
+                { name: "Otręby owsiane", kcal: 246, protein: 17.3, carbs: 66.2, fat: 7.0, fiber: 15.4, defaultAmount: 50 },
+                { name: "Mąka gryczana", kcal: 335, protein: 12.6, carbs: 70.6, fat: 3.1, fiber: 10.0, defaultAmount: 100 },
+                { name: "Błonnik jabłkowy", kcal: 180, protein: 1.0, carbs: 40.0, fat: 0.5, fiber: 35.0, defaultAmount: 20 },
+                { name: "Psyllium (babka płesznik)", kcal: 200, protein: 2.0, carbs: 0, fat: 0.5, fiber: 80.0, defaultAmount: 20 }
             ],
             protein: [
-                {
-                    name: "Białko serwatkowe",
-                    kcal: 400,
-                    protein: 80.0,
-                    carbs: 10.0,
-                    fat: 5.0,
-                    fiber: 0,
-                    defaultAmount: 100
-                },
-                {
-                    name: "Białko roślinne (grochowe)",
-                    kcal: 380,
-                    protein: 75.0,
-                    carbs: 12.0,
-                    fat: 4.0,
-                    fiber: 2.0,
-                    defaultAmount: 100
-                },
-                {
-                    name: "Siemię lniane",
-                    kcal: 534,
-                    protein: 18.3,
-                    carbs: 28.9,
-                    fat: 42.2,
-                    fiber: 27.3,
-                    defaultAmount: 100
-                },
-                {
-                    name: "Nasiona chia",
-                    kcal: 486,
-                    protein: 16.5,
-                    carbs: 30.7,
-                    fat: 30.7,
-                    fiber: 34.4,
-                    defaultAmount: 50
-                },
-                {
-                    name: "Mąka migdałowa",
-                    kcal: 571,
-                    protein: 21.0,
-                    carbs: 21.0,
-                    fat: 49.0,
-                    fiber: 11.0,
-                    defaultAmount: 50
-                },
-                {
-                    name: "Mąka z orzechów włoskich",
-                    kcal: 654,
-                    protein: 15.0,
-                    carbs: 14.0,
-                    fat: 65.0,
-                    fiber: 7.0,
-                    defaultAmount: 30
-                },
-                {
-                    name: "Pestki dyni (mielone)",
-                    kcal: 559,
-                    protein: 19.0,
-                    carbs: 11.0,
-                    fat: 49.0,
-                    fiber: 6.0,
-                    defaultAmount: 30
-                },
-                {
-                    name: "Pestki słonecznika",
-                    kcal: 584,
-                    protein: 21.0,
-                    carbs: 20.0,
-                    fat: 51.5,
-                    fiber: 8.6,
-                    defaultAmount: 30
-                }
+                { name: "Białko serwatkowe", kcal: 400, protein: 80.0, carbs: 10.0, fat: 5.0, fiber: 0, defaultAmount: 100 },
+                { name: "Białko roślinne (grochowe)", kcal: 380, protein: 75.0, carbs: 12.0, fat: 4.0, fiber: 2.0, defaultAmount: 100 },
+                { name: "Siemię lniane", kcal: 534, protein: 18.3, carbs: 28.9, fat: 42.2, fiber: 27.3, defaultAmount: 100 },
+                { name: "Nasiona chia", kcal: 486, protein: 16.5, carbs: 30.7, fat: 30.7, fiber: 34.4, defaultAmount: 50 },
+                { name: "Mąka migdałowa", kcal: 571, protein: 21.0, carbs: 21.0, fat: 49.0, fiber: 11.0, defaultAmount: 50 },
+                { name: "Mąka z orzechów włoskich", kcal: 654, protein: 15.0, carbs: 14.0, fat: 65.0, fiber: 7.0, defaultAmount: 30 },
+                { name: "Pestki dyni (mielone)", kcal: 559, protein: 19.0, carbs: 11.0, fat: 49.0, fiber: 6.0, defaultAmount: 30 },
+                { name: "Pestki słonecznika", kcal: 584, protein: 21.0, carbs: 20.0, fat: 51.5, fiber: 8.6, defaultAmount: 30 }
             ],
             supplements: [
-                {
-                    name: "Kakao",
-                    kcal: 228,
-                    protein: 20.0,
-                    carbs: 58.0,
-                    fat: 14.0,
-                    fiber: 33.0,
-                    defaultAmount: 30
-                },
-                {
-                    name: "Mleko kokosowe w proszku",
-                    kcal: 680,
-                    protein: 7.0,
-                    carbs: 60.0,
-                    fat: 68.0,
-                    fiber: 0,
-                    defaultAmount: 15
-                },
-                {
-                    name: "Drożdże odżywcze",
-                    kcal: 325,
-                    protein: 50.0,
-                    carbs: 35.0,
-                    fat: 5.0,
-                    fiber: 20.0,
-                    defaultAmount: 15
-                },
-                {
-                    name: "Spirulina",
-                    kcal: 290,
-                    protein: 57.0,
-                    carbs: 24.0,
-                    fat: 8.0,
-                    fiber: 4.0,
-                    defaultAmount: 10
-                },
-                {
-                    name: "Chlorella",
-                    kcal: 411,
-                    protein: 58.0,
-                    carbs: 23.0,
-                    fat: 9.0,
-                    fiber: 3.0,
-                    defaultAmount: 10
-                },
-                {
-                    name: "Lecytyna słonecznikowa",
-                    kcal: 700,
-                    protein: 0,
-                    carbs: 10.0,
-                    fat: 70.0,
-                    fiber: 0,
-                    defaultAmount: 10
-                },
-                {
-                    name: "Acerola w proszku",
-                    kcal: 310,
-                    protein: 4.0,
-                    carbs: 78.0,
-                    fat: 0.5,
-                    fiber: 5.0,
-                    defaultAmount: 20
-                },
-                {
-                    name: "MCT w proszku",
-                    kcal: 700,
-                    protein: 0,
-                    carbs: 10.0,
-                    fat: 70.0,
-                    fiber: 0,
-                    defaultAmount: 10
-                }
-            ]
+                { name: "Kakao", kcal: 228, protein: 20.0, carbs: 58.0, fat: 14.0, fiber: 33.0, defaultAmount: 30 },
+                { name: "Mleko kokosowe w proszku", kcal: 680, protein: 7.0, carbs: 60.0, fat: 68.0, fiber: 0, defaultAmount: 15 },
+                { name: "Drożdże odżywcze", kcal: 325, protein: 50.0, carbs: 35.0, fat: 5.0, fiber: 20.0, defaultAmount: 15 },
+                { name: "Spirulina", kcal: 290, protein: 57.0, carbs: 24.0, fat: 8.0, fiber: 4.0, defaultAmount: 10 },
+                { name: "Chlorella", kcal: 411, protein: 58.0, carbs: 23.0, fat: 9.0, fiber: 3.0, defaultAmount: 10 },
+                { name: "Lecytyna słonecznikowa", kcal: 700, protein: 0, carbs: 10.0, fat: 70.0, fiber: 0, defaultAmount: 10 },
+                { name: "Acerola w proszku", kcal: 310, protein: 4.0, carbs: 78.0, fat: 0.5, fiber: 5.0, defaultAmount: 20 },
+                { name: "MCT w proszku", kcal: 700, protein: 0, carbs: 10.0, fat: 70.0, fiber: 0, defaultAmount: 10 }
+            ],
+            custom: []
         };
 
         let selectedIngredients = [];
+        let selectedMilk = milkDatabase[0]; // Domyślnie woda
 
-        function createIngredientElement(ingredient, category) {
+        // Funkcje pomocnicze
+        function createIngredientElement(ingredient, category, isCustom = false) {
             const div = document.createElement('div');
             div.className = 'ingredient-item';
             div.innerHTML = `
@@ -729,6 +697,7 @@
                            id="${ingredient.name}" 
                            onchange="toggleIngredient('${ingredient.name}', '${category}')">
                     <label for="${ingredient.name}" class="ingredient-name">${ingredient.name}</label>
+                    ${isCustom ? `<button class="delete-custom-btn" onclick="deleteCustomIngredient('${ingredient.name}')">Usuń</button>` : ''}
                 </div>
                 <div class="ingredient-controls">
                     <span>Ilość:</span>
@@ -741,16 +710,44 @@
                     <span>g</span>
                 </div>
                 <div class="ingredient-info">
-                    Na 100g: ${ingredient.kcal} kcal | B: ${ingredient.protein}g | W: ${ingredient.carbs}g | T: ${ingredient.fat}g | Błonnik: ${ingredient.fiber}g
+                    ${ingredient.kcal} kcal | B: ${ingredient.protein}g | W: ${ingredient.carbs}g | T: ${ingredient.fat}g | Błonnik: ${ingredient.fiber}g
+                </div>
+            `;
+            return div;
+        }
+
+        function createMilkElement(milk, index) {
+            const div = document.createElement('div');
+            div.className = 'milk-item';
+            div.innerHTML = `
+                <div class="milk-header">
+                    <input type="radio" name="milk" class="milk-radio" 
+                           id="milk-${index}" 
+                           ${index === 0 ? 'checked' : ''}
+                           onchange="selectMilk(${index})">
+                    <label for="milk-${index}" class="milk-name">${milk.name}</label>
+                </div>
+                <div class="milk-info">
+                    ${milk.description}<br>
+                    Na 100ml: ${milk.kcal} kcal | B: ${milk.protein}g | W: ${milk.carbs}g | T: ${milk.fat}g
                 </div>
             `;
             return div;
         }
 
         function initializeIngredients() {
+            // Wczytaj własne składniki z cookies
+            loadCustomIngredientsFromCookies();
+
             const carbsContainer = document.getElementById('carbs-ingredients');
             const proteinContainer = document.getElementById('protein-ingredients');
             const supplementsContainer = document.getElementById('supplements-ingredients');
+            const customContainer = document.getElementById('custom-ingredients');
+
+            carbsContainer.innerHTML = '';
+            proteinContainer.innerHTML = '';
+            supplementsContainer.innerHTML = '';
+            customContainer.innerHTML = '';
 
             ingredientsDatabase.carbs.forEach(ing => {
                 carbsContainer.appendChild(createIngredientElement(ing, 'carbs'));
@@ -764,39 +761,48 @@
                 supplementsContainer.appendChild(createIngredientElement(ing, 'supplements'));
             });
 
+            ingredientsDatabase.custom.forEach(ing => {
+                customContainer.appendChild(createIngredientElement(ing, 'custom', true));
+            });
+
+            // Inicjalizuj mleko
+            initializeMilk();
+
             // Inicjalizuj presety
             initializePresets();
         }
 
+        function initializeMilk() {
+            const milkContainer = document.getElementById('milk-options');
+            milkContainer.innerHTML = '';
+            
+            milkDatabase.forEach((milk, index) => {
+                milkContainer.appendChild(createMilkElement(milk, index));
+            });
+        }
+
         function initializePresets() {
             const presetsContainer = document.getElementById('presets-container');
+            presetsContainer.innerHTML = '';
             
             presetRecipes.forEach((preset, index) => {
-                const presetDiv = document.createElement('div');
-                presetDiv.className = 'preset-btn';
-                presetDiv.innerHTML = `
-                    <div><strong>${preset.name}</strong></div>
-                    <div class="preset-info">${preset.description}</div>
-                    <div class="preset-info"><em>${preset.stats}</em></div>
-                `;
-                presetDiv.onclick = () => loadPreset(preset, presetDiv);
-                presetsContainer.appendChild(presetDiv);
+                const presetBtn = document.createElement('button');
+                presetBtn.className = 'preset-btn';
+                presetBtn.innerHTML = `${preset.name}`;
+                presetBtn.title = preset.description;
+                presetBtn.onclick = () => loadPreset(preset, presetBtn);
+                presetsContainer.appendChild(presetBtn);
             });
         }
 
         function loadPreset(preset, buttonElement) {
-            // Usuń klasę active ze wszystkich przycisków
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // Dodaj klasę active do klikniętego
             buttonElement.classList.add('active');
             
-            // Wyczyść obecny wybór
             clearAll();
             
-            // Załaduj składniki z presetu
             preset.ingredients.forEach(ing => {
                 const checkbox = document.getElementById(ing.name);
                 if (checkbox) {
@@ -817,9 +823,6 @@
             });
             
             updateCalculations();
-            
-            // Przewiń do góry panelu z wynikami
-            document.querySelector('.results-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function toggleIngredient(name, category) {
@@ -848,8 +851,12 @@
             return ingredientsDatabase[category].find(ing => ing.name === name);
         }
 
+        function selectMilk(index) {
+            selectedMilk = milkDatabase[index];
+            updateFinalNutrition();
+        }
+
         function updateCalculations() {
-            // Aktualizuj ilości dla już wybranych składników
             selectedIngredients.forEach(ing => {
                 const amountInput = document.getElementById(ing.name + '-amount');
                 if (amountInput) {
@@ -864,7 +871,6 @@
                 return;
             }
 
-            // Oblicz wartości na 100g mieszanki
             let totalCalories = 0;
             let totalProtein = 0;
             let totalCarbs = 0;
@@ -880,7 +886,6 @@
                 totalFiber += (ing.fiber * percentage);
             });
 
-            // Wyświetl wyniki
             document.getElementById('total-weight').textContent = totalWeight.toFixed(0) + 'g';
             document.getElementById('portions-count').textContent = (totalWeight / 100).toFixed(1);
             document.getElementById('calories').textContent = totalCalories.toFixed(0);
@@ -890,51 +895,66 @@
             document.getElementById('fiber').textContent = totalFiber.toFixed(1);
 
             updatePortionAnalysis(totalCalories, totalProtein, totalCarbs, totalFat, totalFiber);
+            updateFinalNutrition();
         }
 
         function updatePortionAnalysis(kcal, protein, carbs, fat, fiber) {
             const analysis = document.getElementById('portion-analysis');
             let messages = [];
 
-            // Analiza kalorii
             if (kcal < 350) {
-                messages.push('✅ Niskokaloryczna porcja - idealna na odchudzanie');
+                messages.push('✅ Niskokaloryczna');
             } else if (kcal > 450) {
-                messages.push('⚠️ Wysoka kaloryczność - rozważ zmniejszenie porcji do 80g');
+                messages.push('⚠️ Wysoka kaloryczność');
             } else {
-                messages.push('✅ Optymalna kaloryczność dla posiłku');
+                messages.push('✅ Optymalne kalorie');
             }
 
-            // Analiza białka
             if (protein < 20) {
-                messages.push('⚠️ Za mało białka - dodaj więcej białka w proszku');
+                messages.push('⚠️ Za mało białka');
             } else if (protein > 30) {
-                messages.push('💪 Świetna zawartość białka!');
+                messages.push('💪 Super białko!');
             } else {
-                messages.push('✅ Dobra ilość białka');
+                messages.push('✅ Dobre białko');
             }
 
-            // Analiza błonnika
             if (fiber < 8) {
-                messages.push('⚠️ Za mało błonnika - dodaj siemię lniane lub chia');
+                messages.push('⚠️ Za mało błonnika');
             } else if (fiber > 15) {
-                messages.push('🌱 Doskonała zawartość błonnika!');
+                messages.push('🌱 Świetny błonnik!');
             } else {
-                messages.push('✅ Odpowiednia ilość błonnika');
+                messages.push('✅ OK błonnik');
             }
 
-            // Proporcje makro
             const totalMacros = protein * 4 + carbs * 4 + fat * 9;
             const proteinPercent = ((protein * 4) / totalMacros * 100).toFixed(0);
             const carbsPercent = ((carbs * 4) / totalMacros * 100).toFixed(0);
             const fatPercent = ((fat * 9) / totalMacros * 100).toFixed(0);
 
-            messages.push(`📊 Proporcje makro: ${proteinPercent}% białko / ${carbsPercent}% węgle / ${fatPercent}% tłuszcze`);
-
-            // Pokrycie dziennego zapotrzebowania
-            messages.push(`📈 Pokrycie RDA: Błonnik ${(fiber/25*100).toFixed(0)}% | Białko ${(protein/50*100).toFixed(0)}%`);
+            messages.push(`📊 ${proteinPercent}%B/${carbsPercent}%W/${fatPercent}%T`);
 
             analysis.innerHTML = messages.join('<br>');
+        }
+
+        function updateFinalNutrition() {
+            const milkAmount = parseFloat(document.getElementById('milk-amount').value) || 400;
+            const milkAmountL = milkAmount / 100;
+
+            const powderKcal = parseFloat(document.getElementById('calories').textContent) || 0;
+            const powderProtein = parseFloat(document.getElementById('protein').textContent) || 0;
+            const powderCarbs = parseFloat(document.getElementById('carbs').textContent) || 0;
+            const powderFat = parseFloat(document.getElementById('fat').textContent) || 0;
+
+            const finalKcal = powderKcal + (selectedMilk.kcal * milkAmountL);
+            const finalProtein = powderProtein + (selectedMilk.protein * milkAmountL);
+            const finalCarbs = powderCarbs + (selectedMilk.carbs * milkAmountL);
+            const finalFat = powderFat + (selectedMilk.fat * milkAmountL);
+
+            document.getElementById('final-kcal').textContent = finalKcal.toFixed(0);
+            document.getElementById('final-protein').textContent = finalProtein.toFixed(1);
+            document.getElementById('final-carbs').textContent = finalCarbs.toFixed(1);
+            document.getElementById('final-fat').textContent = finalFat.toFixed(1);
+            document.getElementById('final-volume').textContent = (milkAmount + 100).toFixed(0);
         }
 
         function resetDisplay() {
@@ -945,7 +965,8 @@
             document.getElementById('carbs').textContent = '0';
             document.getElementById('fat').textContent = '0';
             document.getElementById('fiber').textContent = '0';
-            document.getElementById('portion-analysis').textContent = 'Wybierz składniki, aby zobaczyć analizę...';
+            document.getElementById('portion-analysis').textContent = 'Wybierz składniki...';
+            updateFinalNutrition();
         }
 
         function toggleCustomForm() {
@@ -958,6 +979,7 @@
 
         function addCustomIngredient() {
             const name = document.getElementById('custom-name').value;
+            const category = document.getElementById('custom-category').value;
             const kcal = parseFloat(document.getElementById('custom-kcal').value);
             const protein = parseFloat(document.getElementById('custom-protein').value);
             const carbs = parseFloat(document.getElementById('custom-carbs').value);
@@ -979,14 +1001,15 @@
                 defaultAmount: 50
             };
 
-            // Dodaj do bazy i interfejsu
-            if (!ingredientsDatabase.custom) {
-                ingredientsDatabase.custom = [];
-            }
+            // Dodaj do bazy
             ingredientsDatabase.custom.push(customIngredient);
 
-            const supplementsContainer = document.getElementById('supplements-ingredients');
-            supplementsContainer.appendChild(createIngredientElement(customIngredient, 'custom'));
+            // Zapisz w cookies
+            saveCustomIngredientsToCookies();
+
+            // Odśwież interfejs
+            const customContainer = document.getElementById('custom-ingredients');
+            customContainer.appendChild(createIngredientElement(customIngredient, 'custom', true));
 
             // Wyczyść formularz
             document.getElementById('custom-name').value = '';
@@ -998,13 +1021,42 @@
             toggleCustomForm();
         }
 
+        function deleteCustomIngredient(name) {
+            if (confirm(`Czy na pewno usunąć "${name}"?`)) {
+                ingredientsDatabase.custom = ingredientsDatabase.custom.filter(ing => ing.name !== name);
+                saveCustomIngredientsToCookies();
+                initializeIngredients();
+                updateCalculations();
+            }
+        }
+
+        function saveCustomIngredientsToCookies() {
+            const expires = new Date();
+            expires.setFullYear(expires.getFullYear() + 1);
+            document.cookie = `customIngredients=${JSON.stringify(ingredientsDatabase.custom)};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function loadCustomIngredientsFromCookies() {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'customIngredients' && value) {
+                    try {
+                        ingredientsDatabase.custom = JSON.parse(decodeURIComponent(value));
+                    } catch (e) {
+                        console.error('Error loading custom ingredients:', e);
+                    }
+                }
+            }
+        }
+
         function saveRecipe() {
             if (selectedIngredients.length === 0) {
                 alert('Najpierw wybierz składniki!');
                 return;
             }
 
-            const recipeName = prompt('Podaj nazwę przepisu:');
+            const recipeName = prompt('Nazwa przepisu:');
             if (!recipeName) return;
 
             const recipe = {
@@ -1017,7 +1069,6 @@
                 }))
             };
 
-            // Zapisz w localStorage
             let savedRecipes = JSON.parse(localStorage.getItem('huelRecipes') || '[]');
             savedRecipes.push(recipe);
             localStorage.setItem('huelRecipes', JSON.stringify(savedRecipes));
@@ -1033,8 +1084,11 @@
                 return;
             }
 
-            const recipeList = savedRecipes.map((r, i) => `${i + 1}. ${r.name} (${new Date(r.date).toLocaleDateString()})`).join('\n');
-            const choice = prompt(`Wybierz przepis (wpisz numer):\n${recipeList}`);
+            const recipeList = savedRecipes.map((r, i) => 
+                `${i + 1}. ${r.name} (${new Date(r.date).toLocaleDateString()})`
+            ).join('\n');
+            
+            const choice = prompt(`Wybierz przepis:\n${recipeList}`);
             
             if (!choice) return;
             
@@ -1045,11 +1099,8 @@
             }
 
             const recipe = savedRecipes[index];
-            
-            // Wyczyść obecny wybór
             clearAll();
 
-            // Załaduj składniki z przepisu
             recipe.ingredients.forEach(ing => {
                 const checkbox = document.getElementById(ing.name);
                 if (checkbox) {
@@ -1085,7 +1136,6 @@
                     input.value = ingredient.defaultAmount;
                 }
             });
-            // Usuń klasę active z presetów
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
